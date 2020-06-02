@@ -1,13 +1,26 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>MySql-PHP 연결 테스트</title>
+</head>
+<body>
+ 
 <?php
- $db_host = "localhost";
- $db_user = "dongkeydev";
- $db_passwd = "Dong230723!"
- $db_name = "dongkeydev";
- $conn = mysqli_connect($db_host, $db_user, $db_passwd, $db_name);
-
- if (mysqli_connect_errno($conn)){
-  echo "db connect fail : " . mysqli_connect_error();
- } else {
-  echo "db connect success";
- }
+echo "MySql 연결 test<br>";
+ 
+$db = mysqli_connect("localhost", "dongkeydev", "Dong230723!", "dongkeydev");
+ 
+if($db){
+    echo "connect : success<br>";
+}
+else{
+    echo "disconnect : fail<br>";
+}
+ 
+$result = mysqli_query($db, 'SELECT VERSION() as VERSION');
+$data = mysqli_fetch_assoc($result);
+echo $data['VERSION'];
 ?>
+ 
+</body>
+</html>
