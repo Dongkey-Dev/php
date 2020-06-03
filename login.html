@@ -2,26 +2,25 @@
     $con = mysqli_connect("localhost", "dongkeydev", "Dong230723!", "dongkeydev");
     mysqli_query($con,'SET NAMES utf8');
  
-    $PID = $_POST["PID"];
-    $UserPassword = $_POST["UserPassword"];
+    $ID = $_POST["id"];
+    $Pswd = $_POST["pswd"];
     
-    $statement = mysqli_prepare($con, "SELECT * FROM article WHERE PID = ? AND UserPassword = ?");
-    mysqli_stmt_bind_param($statement, "ss", $userID, $userPassword);
+    $statement = mysqli_prepare($con, "SELECT * FROM test_user WHERE id = ? AND pswd = ?");
+    mysqli_stmt_bind_param($statement, "ss", $id, $pswd);
     mysqli_stmt_execute($statement);
  
  
     mysqli_stmt_store_result($statement);
-    mysqli_stmt_bind_result($statement, $PID, $UserId, $UserPassword, $Email);
+    mysqli_stmt_bind_result($statement, $id, $name, $pswd);
  
     $response = array();
     $response["success"] = true;
  
     while(mysqli_stmt_fetch($statement)) {
         $response["success"] = true;
-        $response["UserID"] = $UserId;
-        $response["UserPassword"] = $UserPassword;
-        $response["Email"] = $Email;
-        $response["PID"] = $PID;        
+        $response["id"] = $id;
+        $response["pswd"] = $pswd;
+        $response["name"] = $name;
     }
  
     echo json_encode($response);

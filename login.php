@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <body>
-echo "<script>alert($id);</script>";
-</body>
-</html>
-
+<form method="post "action="/join.php">
+Id  : <input type='text'></br>
+Pswd : <input type='text'> </br>
+Login<input type='submit', href=login.php></br>
 <?php
     $con = mysqli_connect("localhost", "dongkeydev", "Dong230723!", "dongkeydev");
     mysqli_query($con,'SET NAMES utf8');
@@ -32,3 +32,5 @@ echo "<script>alert($id);</script>";
  
     echo json_encode($response);
 ?>
+</body>
+</html>

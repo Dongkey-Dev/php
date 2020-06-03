@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
  <body>
+ <?php header("Content-Type: text/html; charset=UTF-8");
+  session_start(); ?>
+ <?php if( (!isset($_SESSION['id']))&&(!isset($SESSION['name'])) ){?>
+  ID   : <input type='text' id='id'></br>
+  Pswd : <input type='text' id='pswd'></br>
   <a href="join.html">Register</a>
   <a href="login.html">Login</a>
+<?php }else{ ?>
+<a href="login.html">Logout</a></br>
+<?php } ?>
 </body>
 </html>
