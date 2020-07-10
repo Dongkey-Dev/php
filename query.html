@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form method="post" action="/query.html">
+<input type="text" name="query"></br>
+<input type="submit">
+</form>
+<h4>result. </h4>
+<?php
+header("Content-Type: text/html; charset=UTF-8");
+$conn = new mysqli("localhost","dongkeydev","Dong230723!","dongkeydev");
+if(!empty($_POST)){
+$sql = $_POST['query'];
+$res = $conn->query($sql);
+echo $_POST['query'];
+while($info=mysql_fetch_array($res)){
+echo $info;
+}
+}
+?>
+</body>
+</html>

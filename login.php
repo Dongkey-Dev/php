@@ -26,7 +26,7 @@ Login<input type='submit', href=login.php></br>
     while(mysqli_stmt_fetch($statement)) {
         $response["success"] = true;
         $response["id"] = $id;
-        $response["name"] = $name;
+        $response["email"] = $email;
         $response["pswd"] = $pswd;
     }
  
